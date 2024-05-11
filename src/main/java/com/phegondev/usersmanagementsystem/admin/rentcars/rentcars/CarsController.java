@@ -1,4 +1,4 @@
-package com.phegondev.usersmanagementsystem.admin.muscleparts;
+package com.phegondev.usersmanagementsystem.admin.rentcars.rentcars;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,26 +7,25 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin
-public class RentCarsController {
+public class CarsController {
 
     @Autowired
-    private RentCarsService service;
+    private CarsService service;
 
 
     @GetMapping("/admin/rent")
-    public ResponseEntity<List<RentCars>> getAll() {
-        List<RentCars> partList = service.getAll();
+    public ResponseEntity<List<Cars>> getAll() {
+        List<Cars> partList = service.getAll();
         return ResponseEntity.ok().body(partList);
     }
 
     @GetMapping("/admin/rent/{vehicleId}")
-    public ResponseEntity<RentCars> getRentCarsById(@PathVariable Long vehicleId) {
-        RentCars rentCars = service.getById(vehicleId);
-        return ResponseEntity.ok().body(rentCars);
+    public ResponseEntity<Cars> getRentCarsById(@PathVariable Long vehicleId) {
+        Cars cars = service.getById(vehicleId);
+        return ResponseEntity.ok().body(cars);
     }
 
 
@@ -56,8 +55,8 @@ public class RentCarsController {
 
 
     @PutMapping("/admin/rent/{vehicleId}")
-    public ResponseEntity<HttpStatus> updateVehicle(@PathVariable Long vehicleId,@RequestBody RentCars rentCars) {
-        service.updateRentCars(vehicleId,rentCars);
+    public ResponseEntity<HttpStatus> updateVehicle(@PathVariable Long vehicleId,@RequestBody Cars cars) {
+        service.updateRentCars(vehicleId, cars);
         return ResponseEntity.ok().build();
     }
 

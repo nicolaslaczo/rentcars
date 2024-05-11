@@ -1,4 +1,4 @@
-package com.phegondev.usersmanagementsystem.admin.muscleparts;
+package com.phegondev.usersmanagementsystem.admin.rentcars.rentcars;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @Entity
 @Builder
-public class RentCars {
+public class Cars {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +32,7 @@ public class RentCars {
 
 
 
-    private RentCars(Builder builder) {
+    private Cars(Builder builder) {
         this.id = builder.id;
         this.brand = builder.brand;
         this.model = builder.model;
@@ -120,8 +120,8 @@ public class RentCars {
 
 
 
-        public RentCars build() {
-            return new RentCars(this);
+        public Cars build() {
+            return new Cars(this);
         }
     }
 }

@@ -1,19 +1,18 @@
-package com.phegondev.usersmanagementsystem.admin.muscleparts;
+package com.phegondev.usersmanagementsystem.admin.rentcars.rentcars;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Optional;
 
-public interface RentCarsService {
+public interface CarsService {
 
-     List<RentCars> getAll();
+     List<Cars> getAll();
 
-    RentCars getById(Long id);
+    Cars getById(Long id);
 
     void saveRentCarsToDb(MultipartFile file, String brand,String model, String vin,String plateNum,String gearbox, Integer buyPrice, Integer rentPrice,String description,Integer year,Boolean availability);
 
     void deleteById(Long id);
 
-    void updateRentCars(Long id,RentCars rentCars);
+    void updateRentCars(Long id, Cars cars);
 }
