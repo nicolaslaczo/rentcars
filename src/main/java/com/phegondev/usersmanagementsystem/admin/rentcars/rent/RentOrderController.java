@@ -15,8 +15,8 @@ public class RentOrderController {
     private RentOrderService orderService;
 
     @GetMapping("/admin/orders")
-    public ResponseEntity<List<RentOrder>> getAllOrders() {
-        List<RentOrder> orderList = orderService.getAllOrdersWithDetails();
+    public ResponseEntity<List<RentOrderDto>> getAllOrders() {
+        List<RentOrderDto> orderList = orderService.getAllOrdersWithDetails();
         return ResponseEntity.ok().body(orderList);
     }
 }

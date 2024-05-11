@@ -5,11 +5,13 @@ import com.phegondev.usersmanagementsystem.admin.rentcars.customer.CustomerRepos
 import com.phegondev.usersmanagementsystem.admin.rentcars.rentcars.Cars;
 import com.phegondev.usersmanagementsystem.admin.rentcars.rentcars.CarsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RentOrderServiceImpl implements RentOrderService {
@@ -20,16 +22,25 @@ public class RentOrderServiceImpl implements RentOrderService {
     private CustomerRepository customerRepository;
     @Autowired
     private CarsRepository carsRepository;
+    @Autowired
+    private RentOrderMapper rentOrderMapper;
 
 
 
     // --------------------- ADMIN -----------------------------//
     // Get all orders
 
-    public List<RentOrder> getAllOrdersWithDetails() {
+    public List<RentOrderDto> getAllOrdersWithDetails() {
         List<RentOrder> rentOrderList = orderRepository.findAll();
-        return rentOrderList;
+        return rentOrderList.stream()
+                .map(rentOrder -> {
+                    RentOrderDto rentOrderDto = rentOrderMapper.toDto(rentOrder);
+                    rentOrderDto.setOrderStatus(rentOrder.getStatus());
+                    return rentOrderDto;
+                })
+                .collect(Collectors.toList());
     }
+
 
 
 

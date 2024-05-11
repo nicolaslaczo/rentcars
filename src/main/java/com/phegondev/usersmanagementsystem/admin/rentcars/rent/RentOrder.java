@@ -4,10 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.phegondev.usersmanagementsystem.admin.rentcars.customer.Customer;
 import com.phegondev.usersmanagementsystem.admin.rentcars.rentcars.Cars;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -16,6 +13,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class RentOrder {
 
     @Id
@@ -23,7 +21,7 @@ public class RentOrder {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER,optional = false)
-    @JoinColumn(name = "card_id",nullable = false)
+    @JoinColumn(name = "car_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Cars cars;
 
@@ -31,6 +29,9 @@ public class RentOrder {
     @JoinColumn(name = "customer_id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Customer customer;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 
 
 

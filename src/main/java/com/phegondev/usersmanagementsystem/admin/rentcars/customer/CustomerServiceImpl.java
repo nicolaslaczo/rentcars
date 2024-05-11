@@ -1,5 +1,6 @@
 package com.phegondev.usersmanagementsystem.admin.rentcars.customer;
 
+import com.phegondev.usersmanagementsystem.admin.rentcars.rent.OrderStatus;
 import com.phegondev.usersmanagementsystem.admin.rentcars.rent.RentOrder;
 import com.phegondev.usersmanagementsystem.admin.rentcars.rent.RentOrderRepository;
 import com.phegondev.usersmanagementsystem.admin.rentcars.rentcars.Cars;
@@ -78,6 +79,7 @@ public class CustomerServiceImpl implements CustomerService {
             RentOrder rentOrder = new RentOrder();
             rentOrder.setCars(existingCar);
             rentOrder.setCustomer(savedCustomer);
+            rentOrder.setStatus(OrderStatus.SPRACOVANIE);
             rentOrderRepository.save(rentOrder);
         } else {
 
@@ -85,7 +87,7 @@ public class CustomerServiceImpl implements CustomerService {
             RentOrder rentOrder = new RentOrder();
             rentOrder.setCars(existingCar);
             rentOrder.setCustomer(existingCustomer);
-
+            rentOrder.setStatus(OrderStatus.SPRACOVANIE);
 
             rentOrderRepository.save(rentOrder);
         }

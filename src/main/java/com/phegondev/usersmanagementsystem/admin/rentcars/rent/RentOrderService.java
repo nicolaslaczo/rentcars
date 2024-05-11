@@ -6,5 +6,5 @@ public interface RentOrderService {
 
     // ------------- ADMIN --------------- //
 
-    List<RentOrder> getAllOrdersWithDetails();
+    List<RentOrderDto> getAllOrdersWithDetails();
 }
